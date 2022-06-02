@@ -15,5 +15,5 @@ programming (without heavy security warnings), I decided to transfer the game to
 code in C#, and further develop the game to include some more detailed concepts to further practice.<br>
 <br>
 <hr>
-The code will be pushed into GitHub in about a day or two. I want to go back and comment the lines should anyone<br>
+The code will be pushed into GitHub in in the coming days. I want to go back and comment the lines should anyone<br>
 ever want to go through it themselves.
