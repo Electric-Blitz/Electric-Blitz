@@ -1,3 +1,4 @@
+<h1>Overview</h1><br>
 Over the summer in 2022, I wanted to build a simple game in C++ to refamiliarize myself with the language after<br>
 so many of my college courses had me use other languages. The game itself was simple; a basic battle system<br>
 where you pick between three different sets of stats and then fight skeletons that will only attack as they<br>
@@ -11,10 +12,10 @@ from the user and is not case-sensitive, and it can be used in both LINUX & Wind
 get it to work on Apple though, unfortunately.<br><br>
 
 The game works, it's just very basic. So, after finishing a draft of it, I decided to transfer the idea onto the<br>
-Unity Game Engine. That involved making the code in C#, adding in visuals, and making it generally more like a<br>
-game than it was before.<br><br>
-
-What's on GitHub will be the C++ version. I revisited it and applied comments so that it is easier to follow<br>
+Unity Game Engine and had since continued the work from there. Doing so let me practice with C#, add visuals, and<br>
+making it generally more like what people would consider a game than it was before.<br><br>
+<hr>
+In this file is the C++ version. I revisited it and applied comments so that it is easier to follow<br>
 for anyone that may be interested.
 <hr>
 
