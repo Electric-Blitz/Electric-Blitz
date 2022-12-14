@@ -17,7 +17,7 @@ void main()
 
 	system("Color 0A");
 
-	int inputC, inputD, inputM;
+	int inputC, inputD, inputM, inputT = -12;
 
 	while (tryer != "0" && tryer != "N" && tryer != "n")
 	{
@@ -34,7 +34,19 @@ void main()
 		cin >> inputM;
 		cout << endl;
 
+		while (inputT < 1)
+		{
+			if (inputT != -12)
+			{
+				cout << "\033[2J\033[1;1H";
+				cout << "Not a good number. Try again." << endl << endl;
+			}
+			cout << "Finally, how many days to simulate (Min is 1): ";
+			cin >> inputT;
+		}
+
 		weather.setValues(inputC, inputD, inputM);
+		weather.setTime(inputT);
 
 		weather.displayWeather();
 
