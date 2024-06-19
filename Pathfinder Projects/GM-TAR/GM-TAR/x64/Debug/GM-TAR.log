@@ -1,0 +1,7 @@
+﻿  Disease.cpp
+  Encounter.cpp
+  FileReceive.cpp
+  TableRollerMenu.cpp
+C:\GitRepos\Zach-Kent-Projects\Pathfinder Projects\GM-TAR\TableRollerMenu.cpp(205,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  GM-TAR.vcxproj -> C:\GitRepos\Zach-Kent-Projects\Pathfinder Projects\GM-TAR\x64\Debug\GM-TAR.exe
