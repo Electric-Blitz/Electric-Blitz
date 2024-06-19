@@ -40,7 +40,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\monsterTable.txt">
+    <Text Include="..\Resources\monsterTable.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Resources\playerList.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
