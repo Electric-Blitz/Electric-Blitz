@@ -1,7 +1,8 @@
-<p align=center><b><i>Hello!</i></b></p>
-This GitHub is made for storing any personal projects I may have that I am fine with making open source. There are several projects that I have worked on during my education at Middle Tennessee State University ranging from assignments given during courses as well as personal projects.<br>
+<p align=center><b><i>Hello there!</i></b></p>
+&emsp;This GitHub is made for storing any personal projects I may have that I am fine with making open source. These projects range in date from my time in college at Middle Tennessee State University (MTSU) to the present.<br>
 <br>
-While I do not intend on putting any class assignments out onto public, I will gladly put any personal projects I do on here to show what I have done from multiple given languages. There is one larger project that I would classify mroe as personal than a school project, however, I had begun that project during an MTSU hackathon with two other individuals. As I do not want to share code that they had made without express permission, I will not be making that project open source. I may at points post updates or concepts of code that I have done on here instead.<br>
+&emsp;Any college assignments that are uploaded onto this page are meant to be stored in one place for my own use or to demonstrate what I have worked on in the past. I do not condone the use of my past assignments without credit, and I certainly do not condone the use of my previous assignments to be used in place of one's work. All class assignments I have done and turned in will be kept in a singular folder to differentiate them from personal projects.<br>
 <br>
-This account is more acting as a personal file of work I have done. If you are interested in anything that may appear here, by all means feel free to use it or alter it as you please! I hope it's of some use to anyone!<br><br>
+&emsp;That said, if anything in my projects helps someone solve an issue that they are having or gives them an idea for an alternative solution without outright using the work, then I am glad that my work was of use!<br>
+<br>
 -Zeke
