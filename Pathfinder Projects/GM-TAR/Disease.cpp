@@ -9,6 +9,16 @@
 
 using namespace std;
 
+int Disease::GetDays()
+{
+	return days;
+}
+
+int Disease::GetPercentChance()
+{
+	return percentChance;
+}
+
 void Disease::AddPlayer(string name)
 {
 	Player player = Player(name);
@@ -37,7 +47,7 @@ void Disease::DisplayPlayers()
 	{
 		for (int i = 0; i < players.size(); i++)
 		{
-			cout << "Player #" << i + 1 << " is " << players.at(i).name << endl;
+			cout << i + 1 << ": " << players.at(i).name << endl;
 		}
 	}
 }
