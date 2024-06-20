@@ -21,20 +21,33 @@ void DiseaseMenu()
 	bool active = true;
 	string name;
 
+	if (files.GetResult() == Both || files.GetResult() == PlayerOnly)
+	{
+		vector<string> players = files.PlayerTable();
+
+		for (int i = 0; i < players.size(); i++)
+		{
+			disease.AddPlayer(players.at(i));
+		}
+	}
+
 	while (active)
 	{
 		system("CLS");
 		choice = '-';
 
-		cout << "Disease Chart for PCs. Assume 25% is the standard." << endl
-			<< "What would you like to do?" << endl
+		cout << "Disease Chart for PCs." << endl
+			<< "The current players are:" << endl;
+		disease.DisplayPlayers();
+
+		cout << endl << "Currently, " << disease.GetDays() << " Day(s) will be generated with a " << endl
+			<< disease.GetPercentChance() << "% chance for disease each day. What would you like to do?" << endl
 			<< "(A)dd Player" << endl
 			<< "(R)emove Player" << endl
-			<< "(D)isplay Players" << endl
-			<< "(C)hange Day Count" << endl
+			<< "Change (D)ay Count" << endl
 			<< "Change (P)ercent Chance" << endl
 			<< "(G)enerate Disease" << endl
-			<< "Return to (M)ain Menu" << endl
+			<< "Return to (M)ain Menu" << endl << endl
 			<< "Select Here: ";
 		cin >> choice;
 
@@ -71,14 +84,7 @@ void DiseaseMenu()
 			cin.ignore();
 			break;
 		}
-		case 'D':	//Display Players
-		{
-			disease.DisplayPlayers();
-			cin.get();
-			cin.ignore();
-			break;
-		}
-		case 'C':	//Set Day Count
+		case 'D':	//Set Day Count
 		{
 			int days;
 			cout << "Please provide how many days would you like to simulate: ";
@@ -208,10 +214,9 @@ int main()
 
 	while (true)
 	{
-		cout << fileStartup << endl;
 		cout << "This program is to help for percentile prep for Serpent's Skull. Please select an option:" << endl
 			<< "(D)isease Chart" << endl
-			<< "(W)andering Monsters [DISABLED]" << endl
+			<< "(W)andering Monsters" << endl
 			<< "(C)lear screen" << endl
 			<< "(Q)uit Program." << endl
 			<< "Select Here: ";

@@ -1,7 +1,7 @@
 
 #include <fstream>
 #include <string>
-#include <list>
+#include <vector>
 #include "FileReceiver.h"
 
 bool FileReceiver::LoadMonsterFile(string name)
@@ -41,17 +41,22 @@ void FileReceiver::MonsterTable()
 	//
 }
 
-list<string> FileReceiver::PlayerTable()
+vector<string> FileReceiver::PlayerTable()
 {
-	list<string> players;
+	vector<string> players;
+	string name;
 
-	//From playerFile, fill list<string> with each line containing a name.
-	//return list<string>
+	while (getline(playerFile, name))
+	{
+		players.push_back(name);
+	}
+
+	playerFile.seekg(playerFile.beg);
 
 	return players;
 }
 
-string FileReceiver::InitialStartup()
+FileResult FileReceiver::InitialStartup()
 {
 	monsterFile.open(FILEBASE + "monsterTable.txt");
 	playerFile.open(FILEBASE + "playerList.txt");
@@ -60,20 +65,28 @@ string FileReceiver::InitialStartup()
 	{
 		monsterName = FILEBASE + "monsterTable.txt";
 		playerName = FILEBASE + "playerList.txt";
-		return "Both the monster encounter table and the player list has been set up.";
+		result = Both;
+		return result;
 	}
 	else if (monsterFile)
 	{
 		monsterName = FILEBASE + "monsterTable.txt";
-		return "The monster encounter table has been set up.";
+		result = MonsterOnly;
+		return result;
 	}
 	else if (playerFile)
 	{
 		playerName = FILEBASE + "playerList.txt";
-		return "The player list has been set up.";
+		result = PlayerOnly;
+		return result;
 	}
 	else
 	{
-		return "Neither the monster encounter table or the player list were found.";
+		return result;
 	}
+}
+
+FileResult FileReceiver::GetResult()
+{
+	return result;
 }

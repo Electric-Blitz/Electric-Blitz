@@ -4,10 +4,13 @@
 
 using namespace std;
 
+enum FileResult {Both, MonsterOnly, PlayerOnly, None};
+
 class FileReceiver
 {
 private:
-	fstream monsterFile, playerFile;
+	FileResult result = None;
+	ifstream monsterFile, playerFile;
 	string monsterName, playerName;
 	const string FILEBASE = "../Resources/";
 
@@ -16,9 +19,9 @@ public:
 	bool LoadPlayerFile(string);
 	string CheckActiveFiles();
 	void MonsterTable();
-	list<string> PlayerTable();
-	string InitialStartup();
-
+	vector<string> PlayerTable();
+	FileResult InitialStartup();
+	FileResult GetResult();
 };
 
 #endif
