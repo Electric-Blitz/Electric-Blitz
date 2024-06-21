@@ -4,6 +4,8 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>			//For istringstream
+#include <algorithm>
 #include <list>
 #include <vector>
 
@@ -27,15 +29,31 @@ inline std::ostream& operator<<(ostream& out, const Time value) {
 struct Monster
 {
 	int lowerChance, upperChance;
-	string name;
-	int amount;
+	string name, amount;
 
-	Monster(int lower, int upper, string nm, int amnt)
+	Monster(int lower, int upper, string nm, string amnt)
 	{
 		upperChance = lower;
 		lowerChance = upper;
+		replace(nm.begin(), nm.end(), '_', ' ');
 		name = nm;
 		amount = amnt;
+	}
+
+	Monster(string nm)
+	{
+		upperChance = 0;
+		lowerChance = 0;
+		name = nm;
+		amount = "1";
+	}
+
+	Monster()
+	{
+		upperChance = 0;
+		lowerChance = 0;
+		name = "-";
+		amount = "1";
 	}
 };
 
@@ -43,10 +61,10 @@ struct Result
 {
 	int percentResult = 0;
 	int dayOccured = 0;
-	int monsterOccured = 0;
+	Monster monsterOccured;
 	Time whenOccured;
 
-	Result(int percent, int day, int monster, Time when)
+	Result(int percent, int day, Monster monster, Time when)
 	{
 		percentResult = percent;
 		dayOccured = day;
@@ -67,6 +85,7 @@ private:
 	string EnumToString(Time time);
 
 public:
+	void AddMonsters(vector<string>);
 	void GenerateEncounter();
 	void SetDayCount(int);
 	void SetPercentChance(int);

@@ -129,6 +129,13 @@ void EncounterMenu()
 {
 	bool active = true;
 
+	if (files.GetResult() == Both || files.GetResult() == MonsterOnly)
+	{
+		vector<string> monsters = files.PlayerTable();
+		
+		encounter.AddMonsters(monsters);
+	}
+
 	while (active)
 	{
 		system("CLS");

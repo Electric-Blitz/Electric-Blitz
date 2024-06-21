@@ -2,6 +2,10 @@
 #define _FILERECEIVER_H_
 #pragma once
 
+#include <fstream>
+#include <string>
+#include <vector>
+
 using namespace std;
 
 enum FileResult {Both, MonsterOnly, PlayerOnly, None};
@@ -17,8 +21,7 @@ private:
 public:
 	bool LoadMonsterFile(string);
 	bool LoadPlayerFile(string);
-	string CheckActiveFiles();
-	void MonsterTable();
+	vector<string> MonsterTable();
 	vector<string> PlayerTable();
 	FileResult InitialStartup();
 	FileResult GetResult();
