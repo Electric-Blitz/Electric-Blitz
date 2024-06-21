@@ -53,7 +53,7 @@ struct Monster
 	{
 		upperChance = 0;
 		lowerChance = 0;
-		name = "-";
+		name = "--";
 		amount = 1;
 	}
 };
@@ -84,6 +84,7 @@ private:
 	Time time = Dawn;
 
 	string EnumToString(Time time);
+	Monster WhichMonster(int);
 
 public:
 	void AddMonsters(vector<string>);
