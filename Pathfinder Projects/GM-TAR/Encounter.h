@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <list>
 #include <vector>
+#include "Dice.h"
 
 using namespace std;
 
@@ -28,13 +29,13 @@ inline std::ostream& operator<<(ostream& out, const Time value) {
 
 struct Monster
 {
-	int lowerChance, upperChance;
-	string name, amount;
+	int lowerChance, upperChance, amount;
+	string name;
 
-	Monster(int lower, int upper, string nm, string amnt)
+	Monster(int lower, int upper, string nm, int amnt)
 	{
-		upperChance = lower;
-		lowerChance = upper;
+		lowerChance = lower;
+		upperChance = upper;
 		replace(nm.begin(), nm.end(), '_', ' ');
 		name = nm;
 		amount = amnt;
@@ -45,7 +46,7 @@ struct Monster
 		upperChance = 0;
 		lowerChance = 0;
 		name = nm;
-		amount = "1";
+		amount = 1;
 	}
 
 	Monster()
@@ -53,7 +54,7 @@ struct Monster
 		upperChance = 0;
 		lowerChance = 0;
 		name = "-";
-		amount = "1";
+		amount = 1;
 	}
 };
 

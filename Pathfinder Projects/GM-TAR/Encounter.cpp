@@ -1,21 +1,24 @@
 #include <stdio.h>
 #include "Encounter.h"
-#include "FileReceiver.h"
 #include "Dice.h"
 
 using namespace std;
 
 void Encounter::AddMonsters(vector<string> entries)
 {
+	Dice diceRoller;
+
 	for (int i = 0; i < entries.size(); i++)
 	{
 		istringstream iss(entries.at(i));
-		int tempLow, tempUp;
+		int tempLow, tempUp, tempTotal;
 		string tempName, tempAmnt;
 
 		iss >> tempLow >> tempUp >> tempName >> tempAmnt;
 
-		monsters.push_back(Monster(tempLow, tempUp, tempName, tempAmnt));
+		tempTotal = diceRoller.RollDice(tempAmnt);
+
+		monsters.push_back(Monster(tempLow, tempUp, tempName, tempTotal));
 	}
 }
 

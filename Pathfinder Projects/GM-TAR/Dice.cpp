@@ -1,21 +1,17 @@
-#include <string>
 #include "Dice.h"
 
-using namespace std;
-
-bool Dice::FormatChecker()
+bool Dice::FormatChecker(string input)
 {
-	if (diceToRoll.find('D') != -1 && isupper(diceToRoll.at(diceToRoll.find('D'))))
+	if (input.find('D') != -1 && isupper(input.at(input.find('D'))))
 	{
-		diceToRoll.at(diceToRoll.find('D')) = tolower(diceToRoll.at(diceToRoll.find('D')));
+		input.at(input.find('D')) = tolower(input.at(input.find('D')));
 	}
 
-	formatCheck = true;
-	formatSplit = diceToRoll.find('d');
+	formatSplit = input.find('d');
 
-	formatSplit == -1 ? formatCheck = false : formatCheck = true;
+	if (formatSplit == -1) return false;
 
-	formatCheck = isdigit(diceToRoll.at(0)) && isdigit(diceToRoll.at(diceToRoll.size() - 1)) && formatCheck != false;
+	bool formatCheck = isdigit(input.at(0)) && isdigit(input.at(input.size() - 1));
 
 	return formatCheck;
 }
@@ -27,24 +23,45 @@ int Dice::DiceRoller(int size = 20)
 
 int Dice::RollDice(string input)
 {
-	diceToRoll = input;
-	int diceSize = 0;
-	list<int> diceTotal;
-	
-	if (FormatChecker() != true)
+	if (input == "1d2")
 	{
-		cout << "ERROR. Format was incorrect. Given input was: " << diceToRoll << endl;
+		return DiceRoller(2);
+	}
+	else if (input == "1d3")
+	{
+		return DiceRoller(3);
+	}
+	else if (input == "1d4")
+	{
+		return DiceRoller(4);
+	}
+	else if (input == "1d6")
+	{
+		return DiceRoller(6);
+	}
+	else if (input == "1d8")
+	{
+		return DiceRoller(8);
+	}
+	else if (input == "1d10")
+	{
+		return DiceRoller(10);
+	}
+
+	if (!FormatChecker(input))
+	{
+		return stoi(input);
 	}
 	else
 	{
-		diceSize = stoi(diceToRoll.substr(formatSplit + 1));
+		int total = 0;
+		int diceSize = stoi(input.substr(formatSplit + 1));
 
-		for (int i = 0; i < stoi(diceToRoll); i++)
+		for (int i = 0; i < stoi(input); i++)
 		{
-			result += DiceRoller(diceSize);
-			
+			total += DiceRoller(diceSize);
 		}
-	}
 
-	return result;
+		return total;
+	}
 }

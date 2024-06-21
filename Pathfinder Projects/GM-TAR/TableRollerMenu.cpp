@@ -131,7 +131,7 @@ void EncounterMenu()
 
 	if (files.GetResult() == Both || files.GetResult() == MonsterOnly)
 	{
-		vector<string> monsters = files.PlayerTable();
+		vector<string> monsters = files.MonsterTable();
 		
 		encounter.AddMonsters(monsters);
 	}
