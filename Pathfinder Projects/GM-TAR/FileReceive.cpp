@@ -1,7 +1,4 @@
 
-#include <fstream>
-#include <string>
-#include <vector>
 #include "FileReceiver.h"
 
 bool FileReceiver::LoadMonsterFile(string name)
@@ -11,10 +8,24 @@ bool FileReceiver::LoadMonsterFile(string name)
 		monsterFile.close();
 	}
 
-	monsterName = name;
+	monsterName = FILEBASE + name;
 	monsterFile.open(monsterName);
 
-	return monsterFile.is_open();
+	if (monsterFile.is_open())
+	{
+		if (result == PlayerOnly)
+		{
+			result = Both;
+		}
+		else if (result == None)
+		{
+			result = MonsterOnly;
+		}
+
+		return true;
+	}
+
+	return false;
 }
 
 bool FileReceiver::LoadPlayerFile(string name)
@@ -24,21 +35,39 @@ bool FileReceiver::LoadPlayerFile(string name)
 		playerFile.close();
 	}
 
-	playerName = name;
+	playerName = FILEBASE + name;
 	playerFile.open(playerName);
 
-	return playerFile.is_open();
+	if (monsterFile.is_open())
+	{
+		if (result == MonsterOnly)
+		{
+			result = Both;
+		}
+		else if (result == None)
+		{
+			result = PlayerOnly;
+		}
+
+		return true;
+	}
+
+	return false;
 }
 
-string FileReceiver::CheckActiveFiles()
+vector<string> FileReceiver::MonsterTable()
 {
+	vector<string> monsters;
+	string line;
+	
+	while (getline(monsterFile, line))
+	{
+		monsters.push_back(line);
+	}
 
-	return string();
-}
+	monsterFile.seekg(monsterFile.beg);
 
-void FileReceiver::MonsterTable()
-{
-	//
+	return monsters;
 }
 
 vector<string> FileReceiver::PlayerTable()
