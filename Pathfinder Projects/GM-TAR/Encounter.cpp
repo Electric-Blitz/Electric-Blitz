@@ -6,6 +6,7 @@
 #include <list>
 #include "Encounter.h"
 #include "FileReceiver.h"
+#include "Dice.h"
 
 using namespace std;
 
