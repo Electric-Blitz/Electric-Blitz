@@ -29,6 +29,8 @@ private:
 	int percentChance = 25;
 
 public:
+	int GetDays();
+	int GetPercentChance();
 	void AddPlayer(string);
 	void RemovePlayer(string);
 	void DisplayPlayers();

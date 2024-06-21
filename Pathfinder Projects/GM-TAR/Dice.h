@@ -8,14 +8,13 @@
 #include <cmath>
 #include <list>
 
+using namespace std;
+
 class Dice
 {
 private:
-	string diceToRoll;
 	int formatSplit;
-	int result = 0;
-	bool formatCheck;
-	bool FormatChecker();
+	bool FormatChecker(string);
 	int DiceRoller(int);
 
 public:

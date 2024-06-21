@@ -1,14 +1,26 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cmath>
 #include <stdio.h>
-#include <list>
 #include "Encounter.h"
-#include "FileReceiver.h"
 #include "Dice.h"
 
 using namespace std;
+
+void Encounter::AddMonsters(vector<string> entries)
+{
+	Dice diceRoller;
+
+	for (int i = 0; i < entries.size(); i++)
+	{
+		istringstream iss(entries.at(i));
+		int tempLow, tempUp, tempTotal;
+		string tempName, tempAmnt;
+
+		iss >> tempLow >> tempUp >> tempName >> tempAmnt;
+
+		tempTotal = diceRoller.RollDice(tempAmnt);
+
+		monsters.push_back(Monster(tempLow, tempUp, tempName, tempTotal));
+	}
+}
 
 void Encounter::GenerateEncounter()
 {
@@ -27,7 +39,7 @@ void Encounter::GenerateEncounter()
 			{
 				whichMonster = rand() % 100 + 1;
 
-				encounters.push_back(Result(chance, i + 1, whichMonster, static_cast<Time>(j)));
+				encounters.push_back(Result(chance, i + 1, Monster(), static_cast<Time>(j)));
 			}
 		}
 	}
@@ -53,7 +65,7 @@ list<string> Encounter::GetResults()
 		statement = "On Day " + to_string(encounters.at(i).dayOccured) + " at "
 			+ EnumToString(encounters.at(i).whenOccured) + " there is an encounter at percent "
 			+ to_string(encounters.at(i).percentResult) + ". Apply monster from " + 
-			to_string(encounters.at(i).monsterOccured) + "%";
+			encounters.at(i).monsterOccured.name + "%";
 
 		results.push_back(statement);
 	}
