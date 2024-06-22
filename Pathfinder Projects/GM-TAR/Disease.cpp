@@ -101,5 +101,15 @@ list<string> Disease::GetResults()
 		}
 	}
 
+	ResetTable();
 	return results;
+}
+
+void Disease::ResetTable()
+{
+	for (int i = 0; i < players.size(); i++)
+	{
+		players.at(i).daysSick.clear();
+		players.at(i).percentAmount.clear();
+	}
 }

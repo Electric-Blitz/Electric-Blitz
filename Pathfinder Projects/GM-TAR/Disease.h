@@ -38,6 +38,7 @@ public:
 	void SetPercentChance(int);
 	void GenerateDisease();
 	list<string> GetResults();
+	void ResetTable();
 };
 
 #endif

@@ -92,6 +92,7 @@ public:
 	void SetDayCount(int);
 	void SetPercentChance(int);
 	list<string> GetResults();
+	void ResetTable();
 };
 
 #endif

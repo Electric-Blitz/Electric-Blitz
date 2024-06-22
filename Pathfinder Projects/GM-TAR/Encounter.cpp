@@ -99,5 +99,12 @@ list<string> Encounter::GetResults()
 		results.push_back(statement);
 	}
 
+	ResetTable();
+
 	return results;
+}
+
+void Encounter::ResetTable()
+{
+	encounters.clear();
 }
