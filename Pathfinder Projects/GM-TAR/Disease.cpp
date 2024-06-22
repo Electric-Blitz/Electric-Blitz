@@ -9,12 +9,21 @@
 
 using namespace std;
 
+void Disease::ResetTable()
+{
+	for (int i = 0; i < players.size(); i++)
+	{
+		players.at(i).daysSick.clear();
+		players.at(i).percentAmount.clear();
+	}
+}
+
 int Disease::GetDays()
 {
 	return days;
 }
 
-int Disease::GetPercentChance()
+int Disease::GetPercent()
 {
 	return percentChance;
 }
@@ -103,13 +112,4 @@ list<string> Disease::GetResults()
 
 	ResetTable();
 	return results;
-}
-
-void Disease::ResetTable()
-{
-	for (int i = 0; i < players.size(); i++)
-	{
-		players.at(i).daysSick.clear();
-		players.at(i).percentAmount.clear();
-	}
 }

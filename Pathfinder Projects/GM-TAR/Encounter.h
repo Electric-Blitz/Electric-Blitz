@@ -29,10 +29,10 @@ inline std::ostream& operator<<(ostream& out, const Time value) {
 
 struct Monster
 {
-	int lowerChance, upperChance, amount;
-	string name;
+	int lowerChance, upperChance;
+	string name, amount;
 
-	Monster(int lower, int upper, string nm, int amnt)
+	Monster(int lower, int upper, string nm, string amnt)
 	{
 		lowerChance = lower;
 		upperChance = upper;
@@ -46,7 +46,7 @@ struct Monster
 		upperChance = 0;
 		lowerChance = 0;
 		name = nm;
-		amount = 1;
+		amount = "1";
 	}
 
 	Monster()
@@ -54,7 +54,7 @@ struct Monster
 		upperChance = 0;
 		lowerChance = 0;
 		name = "--";
-		amount = 1;
+		amount = "1";
 	}
 };
 
@@ -85,14 +85,19 @@ private:
 
 	string EnumToString(Time time);
 	Monster WhichMonster(int);
+	void ResetTable();
 
 public:
 	void AddMonsters(vector<string>);
 	void GenerateEncounter();
+
 	void SetDayCount(int);
+	int GetDays();
+
 	void SetPercentChance(int);
+	int GetPercent();
+
 	list<string> GetResults();
-	void ResetTable();
 };
 
 #endif

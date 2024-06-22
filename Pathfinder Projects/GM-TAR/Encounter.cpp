@@ -38,14 +38,12 @@ void Encounter::AddMonsters(vector<string> entries)
 	for (int i = 0; i < entries.size(); i++)
 	{
 		istringstream iss(entries.at(i));
-		int tempLow, tempUp, tempTotal;
+		int tempLow, tempUp;
 		string tempName, tempAmnt;
 
 		iss >> tempLow >> tempUp >> tempName >> tempAmnt;
 
-		tempTotal = diceRoller.RollDice(tempAmnt);
-
-		monsters.push_back(Monster(tempLow, tempUp, tempName, tempTotal));
+		monsters.push_back(Monster(tempLow, tempUp, tempName, tempAmnt));
 	}
 }
 
@@ -62,7 +60,7 @@ void Encounter::GenerateEncounter()
 		{
 			chance = rand() % 100 + 1;
 
-			if (chance <= 15)
+			if (chance <= percentChance)
 			{
 				whichThreat = rand() % 100 + 1;
 
@@ -84,17 +82,30 @@ void Encounter::SetPercentChance(int percentGiven)
 	percentChance = percentGiven;
 }
 
+int Encounter::GetDays()
+{
+	return days;
+}
+
+int Encounter::GetPercent()
+{
+	return percentChance;
+}
+
 list<string> Encounter::GetResults()
 {
 	list<string> results;
 	string statement;
+	Dice diceRoller;
 
 	for (int i = 0; i < encounters.size(); i++)
 	{
+		int amountOfMonsters = diceRoller.RollDice(encounters.at(i).monsterOccured.amount);
+
 		statement = "On Day " + to_string(encounters.at(i).dayOccured) + " at "
 			+ EnumToString(encounters.at(i).whenOccured) + " there is an encounter at percent "
 			+ to_string(encounters.at(i).percentResult) + ". Prepare "
-			+ to_string(encounters.at(i).monsterOccured.amount) + " " + encounters.at(i).monsterOccured.name + ".";
+			+ to_string(amountOfMonsters) + " " + encounters.at(i).monsterOccured.name + ".";
 
 		results.push_back(statement);
 	}
