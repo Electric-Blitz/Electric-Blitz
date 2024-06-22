@@ -41,7 +41,7 @@ void DiseaseMenu()
 		disease.DisplayPlayers();
 
 		cout << endl << "Currently, " << disease.GetDays() << " Day(s) will be generated with a " << endl
-			<< disease.GetPercentChance() << "% chance for disease each day. What would you like to do?" << endl
+			<< disease.GetPercent() << "% chance for disease each day. What would you like to do?" << endl
 			<< "(A)dd Player" << endl
 			<< "(R)emove Player" << endl
 			<< "Change (D)ay Count" << endl
@@ -141,8 +141,10 @@ void EncounterMenu()
 		system("CLS");
 		choice = '-';
 
-		cout << "Encounter Chart. Assume 15% is the standard." << endl
-			<< "What would you like to do?" << endl
+		cout << "Encounter Chart for Wandering Monsters." << endl;
+		
+		cout << endl << "Currently, " << encounter.GetDays() << " Day(s) will be generated with a " << encounter.GetPercent() << "% chance for" << endl
+			<< "an encounter during each time of each day. What would you like to do?" << endl
 			<< "Change (D)ay Count" << endl
 			<< "Change (P)ercent Chance" << endl
 			<< "(G)enerate Encounter" << endl

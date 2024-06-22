@@ -28,17 +28,22 @@ private:
 	int days = 1;
 	int percentChance = 25;
 
+	void ResetTable();
+
 public:
-	int GetDays();
-	int GetPercentChance();
 	void AddPlayer(string);
 	void RemovePlayer(string);
 	void DisplayPlayers();
+
 	void SetDayCount(int);
+	int GetDays();
+
 	void SetPercentChance(int);
+	int GetPercent();
+
 	void GenerateDisease();
 	list<string> GetResults();
-	void ResetTable();
+	
 };
 
 #endif
