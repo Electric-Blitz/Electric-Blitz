@@ -12,8 +12,11 @@ using namespace std;
 Disease disease;
 Encounter encounter;
 FileReceiver files;
+ifstream startup;
 
-string fileStartup;
+string startupFileName = files.FILEBASE + "Setup.txt";
+string monsterFile;// = files.FILEBASE + "SmugglersShiv.txt";
+string playerFile;// = files.FILEBASE + "playerList.txt";
 char choice;
 
 void DiseaseMenu()
@@ -145,9 +148,10 @@ void EncounterMenu()
 		
 		cout << endl << "Currently, " << encounter.GetDays() << " Day(s) will be generated with a " << encounter.GetPercent() << "% chance for" << endl
 			<< "an encounter during each time of each day. What would you like to do?" << endl
-			<< "Change (D)ay Count" << endl
-			<< "Change (P)ercent Chance" << endl
+			<< "(D)ay Count Change" << endl
+			<< "(P)ercent Chance Change" << endl
 			<< "(G)enerate Encounter" << endl
+			<< "(S)how Monster Table" << endl
 			<< "Return to (M)ain Menu" << endl
 			<< "Select Here: ";
 		cin >> choice;
@@ -194,6 +198,11 @@ void EncounterMenu()
 			cin.ignore();
 			break;
 		}
+		case 'S':	//Show Monster Table List
+			encounter.PrintMonsterTable();
+			cin.get(); 
+			cin.ignore();
+			break;
 		case 'M':	//Return to Main Menu
 		{
 			active = false;
@@ -213,14 +222,97 @@ void Quit()
 	exit(1);
 }
 
-int main()
+void InitialSetup()
 {
 	// Change color of text to green.
 	system("Color 0A");
 	srand(time(0));
 
-	fileStartup = files.InitialStartup();
+	bool setupIncomplete = true;
+	string newFileName;
+	string monsterFileName, playerFileName;
 
+	startup.open(startupFileName);
+
+	getline(startup, monsterFileName);
+	monsterFile = files.FILEBASE + monsterFileName;
+
+	getline(startup, playerFileName);
+	playerFile = files.FILEBASE + playerFileName;
+
+	while (setupIncomplete)
+	{
+		system("CLS");
+
+		cout << "Prior to start up, the following resources will be used:" << endl
+			<< "Monster Table: " << monsterFileName << endl
+			<< "Player Table: " << playerFileName << endl << endl;
+
+		cout << "Based on whether these resources are accurate, select an option:" << endl
+			<< "(Y)es - These resources are correct." << endl
+			<< "(M)onster Table - The Monster Table is incorrect." << endl
+			<< "(P)layer Table - The Player Table is incorrect." << endl
+			<< "(B)oth - Both resources are incorrect." << endl
+			<< "Select Here: ";
+		cin >> choice;
+
+		cout << endl << endl;
+
+		// If not uppercase, make it uppercase.
+		if (!isupper(choice))
+			choice = toupper(choice);
+
+		switch (choice)
+		{
+		case 'Y':
+			setupIncomplete = false;
+			files.InitialStartup(monsterFile, playerFile);
+			break;
+		case 'M':
+			setupIncomplete = false;
+			cout << "Provide a text file for the Monster Table. Ensure correct capitalization and do NOT add '.txt' at the end." << endl
+				<< "Provide file name here: ";
+			cin >> newFileName;
+			monsterFile = files.FILEBASE + newFileName + ".txt";
+
+			files.InitialStartup(monsterFile, playerFile);
+			break;
+		case 'P':
+			setupIncomplete = false;
+			cout << "Provide a text file for the Player Table. Ensure correct capitalization and do NOT add '.txt' at the end." << endl
+				<< "Provide file name here: ";
+			cin >> newFileName;
+			playerFile = files.FILEBASE + newFileName + ".txt";
+
+			files.InitialStartup(monsterFile, playerFile);
+			break;
+		case 'B':
+			setupIncomplete = false;
+			cout << "First, provide a text file for the Monster Table. Ensure correct capitalization and do NOT add '.txt' at the end." << endl
+				<< "Provide file name here: ";
+			cin >> newFileName;
+			monsterFile = files.FILEBASE + newFileName + ".txt";
+
+			cout << "Next, provide a text file for the Player Table. Ensure correct capitalization and do NOT add '.txt' at the end." << endl
+				<< "Provide file name here: ";
+			cin >> newFileName;
+			playerFile = files.FILEBASE + newFileName + ".txt";
+
+			files.InitialStartup(monsterFile, playerFile);
+			break;
+		default:
+			cout << "The letter you provided is not among the options. Try again." << endl;
+			cin.ignore();
+			break;
+		}
+	}
+}
+
+int main()
+{
+	InitialSetup();
+	system("CLS");
+	
 	while (true)
 	{
 		cout << "This program is to help for percentile prep for Serpent's Skull. Please select an option:" << endl

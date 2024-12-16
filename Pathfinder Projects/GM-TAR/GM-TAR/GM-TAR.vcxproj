@@ -141,8 +141,11 @@
     <ClInclude Include="..\FileReceiver.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Resources\monsterTable.txt" />
+    <Text Include="..\Resources\MneriPlains.txt" />
+    <Text Include="..\Resources\Setup.txt" />
+    <Text Include="..\Resources\SmugglersShiv.txt" />
     <Text Include="..\Resources\playerList.txt" />
+    <Text Include="ScreamingJungle.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

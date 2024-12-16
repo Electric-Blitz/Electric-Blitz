@@ -90,6 +90,7 @@ private:
 public:
 	void AddMonsters(vector<string>);
 	void GenerateEncounter();
+	void PrintMonsterTable();
 
 	void SetDayCount(int);
 	int GetDays();

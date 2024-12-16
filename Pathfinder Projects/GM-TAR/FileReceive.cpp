@@ -85,33 +85,27 @@ vector<string> FileReceiver::PlayerTable()
 	return players;
 }
 
-FileResult FileReceiver::InitialStartup()
+void FileReceiver::InitialStartup(string monster, string players)
 {
-	monsterFile.open(FILEBASE + "monsterTable.txt");
-	playerFile.open(FILEBASE + "playerList.txt");
 
-	if (monsterFile && playerFile)
+	bool monsterCheck = LoadMonsterFile(monster);//monsterFile.open(FILEBASE + "SmugglersShivTable.txt");
+	bool playerCheck = LoadPlayerFile(players);//playerFile.open(FILEBASE + "playerList.txt");
+
+	if (monsterCheck && playerCheck)
 	{
 		monsterName = FILEBASE + "monsterTable.txt";
 		playerName = FILEBASE + "playerList.txt";
-		result = Both;
-		return result;
+		return;
 	}
-	else if (monsterFile)
+	else if (monsterCheck)
 	{
-		monsterName = FILEBASE + "monsterTable.txt";
-		result = MonsterOnly;
-		return result;
+		monsterName = FILEBASE + "SmugglersShivTable.txt";
+		return;
 	}
-	else if (playerFile)
+	else if (playerCheck)
 	{
 		playerName = FILEBASE + "playerList.txt";
-		result = PlayerOnly;
-		return result;
-	}
-	else
-	{
-		return result;
+		return;
 	}
 }
 

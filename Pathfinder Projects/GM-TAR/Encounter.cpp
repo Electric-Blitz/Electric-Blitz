@@ -72,6 +72,31 @@ void Encounter::GenerateEncounter()
 	}
 }
 
+void Encounter::PrintMonsterTable()
+{
+	cout << "d%\tMonster\t\t\tAmount" << endl;
+
+	for (int i = 0; i < monsters.size(); i++)
+	{
+		Monster monster = monsters.at(i);
+
+		string tabSize;
+		if (monster.name.size() < 8)
+			tabSize = "\t\t\t";
+		else if (monster.name.size() < 16)
+			tabSize = "\t\t";
+		else
+			tabSize = "\t";
+
+		if (monster.lowerChance == monster.upperChance)
+			cout << monster.lowerChance << "\t" << monster.name
+				<< tabSize << monster.amount << endl;
+		else
+			cout << monster.lowerChance << "-" << monster.upperChance
+			<< "\t" << monster.name << tabSize << monster.amount << endl;
+	}
+}
+
 void Encounter::SetDayCount(int daysGiven)
 {
 	days = daysGiven;
