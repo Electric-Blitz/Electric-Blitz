@@ -1,7 +1,11 @@
-/* Zeke Kent
+/* Author: Zachary (Zeke) Kent
  * Enum Practice
  * 
  * Displaying basic knowledge of enumerated types in assignment.
+ * 
+ * [Like with all assignments from college courses, some code may be adjusted
+ *  so as to prevent information unrelated to code itself or to prevent being
+ *  used in similar assignments by others.]
  */
 public class Enum_Practice {
     

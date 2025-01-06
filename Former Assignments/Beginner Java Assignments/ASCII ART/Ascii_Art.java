@@ -1,4 +1,4 @@
-/* Zach Kent
+/* Author: Zachary (Zeke) Kent
  * ASCII Initials
  * 
  * First Java assignment from college. Went over basic Java code layout.

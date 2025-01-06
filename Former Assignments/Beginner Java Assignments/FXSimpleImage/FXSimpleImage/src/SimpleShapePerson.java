@@ -1,10 +1,9 @@
-
-/* Zach Kent
+/* Author: Zachary (Zeke) Kent
  * Simple Design Made w/ Shapes
  * 
  * Creates window containing 'person' made of simple shapes.
- * Assignment was an introduction to how to open a window and display an image
- * using JavaFX.
+ *  Assignment was an introduction to how to open a window and display an image
+ *  using JavaFX.
  *  
  * [Like with all assignments from college courses, some code may be adjusted
  *  so as to prevent information unrelated to code itself or to prevent being
