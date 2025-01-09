@@ -8,7 +8,8 @@ these are unaltered. What I want to do is take these assignments and rewrite the
 what I have learned overall from my time in personal projects and other college courses. As I
 complete those, I will put them up on my GitHub account in the near future. More than anything,
 it is simply practice for myself.
-<br><br>
+
+<hr>
 
 <p align=center><b><i>Neural Network Project</i></b></p>
 &emsp;One course I took during college that was unique from any other was a course titled
