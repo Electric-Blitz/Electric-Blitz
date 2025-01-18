@@ -5,7 +5,7 @@
  *
  * Purpose: To read in a list of grades from grades.txt,
  *          calculate the # of grades, total points,
- *			max possible points, and the % each grade is
+ *	    max possible points, and the % each grade is
  *          worth.
  *
  * [Like with all assignments from college courses, some
